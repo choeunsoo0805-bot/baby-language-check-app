@@ -16,7 +16,7 @@ def check_language(checked_count, total):
     else:
         message = "전문가 상담을 권장해요"
         tip = "💡 **추천 육아 팁:** 너무 걱정하지 마시고, 가까운 소아청소년과나 발달센터에서 전문적인 상담을 받아보세요."
-    return message, rate
+    return message, rate, tip
 
 st.title("우리 아이 언어발달 체크")
 month = st.slider("아이 개월 수", 12, 48)
@@ -45,6 +45,8 @@ if st.button("결과 보기"):
         st.warning(message)
     else:
         st.error(message)
+    
+    st.info(tip)
     st.table(results)
     st.metric("달성률", f"{rate:.0f}%")
     st.caption("발달에는 개인차가 있으며, 걱정되면 전문가와 상담하세요. (진단이 아닌 참고용)")
